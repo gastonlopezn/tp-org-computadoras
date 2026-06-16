@@ -1,7 +1,7 @@
 section .text
-    global sumar_matriz
+    global _sumar_matriz
 
-sumar_matriz:
+_sumar_matriz:
     ; Prologo
     push ebp
     mov ebp, esp
@@ -14,13 +14,12 @@ sumar_matriz:
     mov eax, [ebp + 8]              ; Primer parametro
     mov ebx, [ebp + 12]             ; Segundo parametro
     mov edx, [ebp + 16]             ; Tercer parametro (0)
-    
-    mov ecx, [ebp + 20]             ; Cantidad
+    mov ecx, [ebp + 20]             ; Cuarto parametro, cantidad de vueltas del ciclo
     mov esi, 0                      ; Indice 
 
     inicio_bucle:                       
         cmp esi, ecx                ; Comparamos el indice con las vueltas
-        jge fin_bucle               ; Si es mayor o igual, break
+        je fin_bucle                ; Si la cantidad es estrictamente menor, salimos del bucle
 
         mov edi, [eax + esi * 4]    ; Nos traemos al EDI el PRIMER PARAMETRO (M1)
         add edi, [ebx + esi * 4]    ; Sumamos nuestro primer parametro con EL SEGUNDO
@@ -38,5 +37,5 @@ sumar_matriz:
         mov esp, ebp
         pop ebp
         ret
-        
+             
 

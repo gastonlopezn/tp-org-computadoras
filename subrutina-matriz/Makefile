@@ -8,9 +8,9 @@ programa: main.o sumar.o
 main.o: main.c
 	gcc -m32 -c main.c -o main.o
 
-# Compilamos tu Assembler a 32 bits
+# Compilamos Assembler a 32 bits
 sumar.o: sumar_matriz.asm
-	nasm -f elf32 sumar_matriz.asm -o sumar.o
+	nasm -f win32 sumar_matriz.asm -o sumar.o
 
 # Regla para limpiar la carpeta
 clean:
